@@ -1,0 +1,23 @@
+{
+  "name": "log-collector",
+  "version": "1.0.0",
+  "description": "A simple REST API the retrieves a server's log file contents.",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thenicknash/log-collector.git"
+  },
+  "author": "Nicholas Nash",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thenicknash/log-collector/issues"
+  },
+  "homepage": "https://github.com/thenicknash/log-collector#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
+}
