@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/thenicknash/log-collector#readme",
   "dependencies": {
+    "bulma": "^0.9.4",
+    "cors": "^2.8.5",
     "express": "^4.18.1"
   },
   "devDependencies": {

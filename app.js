@@ -1,12 +1,16 @@
 const express = require('express')
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
+const cors = require('cors')
 
 // LEAVE FOR DISCUSSION
 // const fs = require('fs')
 // const readline = require('readline')
 
 const app = express()
+app.use(cors({
+  origin: 'http://localhost:8080'
+}))
 
 
 // Handling large files takes way too long with this current iteration and can break.
@@ -23,7 +27,6 @@ async function execFileSearch(execString) {
   if (stderr) {
     console.error(`error: ${stderr}`);
   }
-  console.log(`Number of files ${stdout}`);
 
   return stdout
 }
@@ -31,11 +34,13 @@ async function execFileSearch(execString) {
 // Removes lines that do not match the required keyword
 function filterArrayByKeyword(array, keyword) {
   let filteredArray = []
+
   for (let i = 0; i < array.length; i++) {
     if (array[i].match(keyword)) {
       filteredArray.unshift(array[i])
     }
   }
+
   return filteredArray
 }
 
@@ -49,6 +54,10 @@ app.get('/view/file', async function test (req, res) {
     const fileName = req.query.fn
     const numberOfLines = req.query.n
     const keyword = req.query.kw
+
+    if (fileName.trim() == '') {
+      throw new Error('You must enter a valid file name')
+    }
 
     if (
       !numberOfLines.match(/^[0-9]+$/)
