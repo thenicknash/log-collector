@@ -9,7 +9,7 @@ const exec = util.promisify(require('child_process').exec)
 const app = express()
 
 
-// Handling large files takes way too long with this current iteration.
+// Handling large files takes way too long with this current iteration and can break.
 // Potential solutions for this could be:
 // - Use packages specifically designed to handle large files
 // - Disallowing more than a certain number of log entries retrieved in one call
@@ -55,6 +55,11 @@ app.get('/view/file', async function test (req, res) {
       || Number(numberOfLines) === 0
     ) {
       throw new Error('You must enter a valid number for the "n" query parameter')
+    }
+
+    // Limitation for the sake of this project
+    if (Number(numberOfLines) > 10000) {
+      throw new Error('You can only search for 10,000 lines or less per API call')
     }
 
     const inputFilePath = './var/log/' + fileName
