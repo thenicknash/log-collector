@@ -81,7 +81,7 @@ export default {
 
     // Retrieves the requested logs via API call
     function getLogs() {
-      axios.get(`http://localhost:3000/view/file?fn=${fileName.value}&n=${numberOfLines.value}&kw=${keyword.value}`)
+      axios.get(`http://localhost:3000/api/view/file?fn=${fileName.value}&n=${numberOfLines.value}&kw=${keyword.value}`)
         .then(response => {
           if (response.data.success == true) {
             logData.value = response.data.data

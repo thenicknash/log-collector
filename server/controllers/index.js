@@ -1,16 +1,5 @@
-const express = require('express')
 const util = require('util')
 const exec = util.promisify(require('child_process').exec)
-const cors = require('cors')
-
-// LEAVE FOR DISCUSSION
-// const fs = require('fs')
-// const readline = require('readline')
-
-const app = express()
-app.use(cors({
-  origin: 'http://localhost:8080'
-}))
 
 
 // Handling large files takes way too long with this current iteration and can break.
@@ -44,12 +33,9 @@ function filterArrayByKeyword(array, keyword) {
   return filteredArray
 }
 
-
-// Home page
-app.get('/', (req, res) => res.send('Welcome to the Log Collector 9000!'))
-
 // Retrieves a specified log file for viewing purposes
-app.get('/view/file', async function test (req, res) {
+// const viewFile = async function test (req, res) {
+const viewFile = async (req, res, next) => {
   try {
     const fileName = req.query.fn
     const numberOfLines = req.query.n
@@ -83,6 +69,7 @@ app.get('/view/file', async function test (req, res) {
       success: true,
       data: filteredReverseOrderArray
     })
+
 
     // LEAVING THE BELOW CODE FOR DISCUSSION
     // const fileReader = readline.createInterface({
@@ -118,7 +105,8 @@ app.get('/view/file', async function test (req, res) {
       message: '' + e
     })
   }
-})
+}
 
-// Starts the HTTP server
-app.listen(3000, () => {})
+module.exports = {
+  viewFile
+}
