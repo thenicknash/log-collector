@@ -57,7 +57,7 @@ const viewFile = async (req, res, next) => {
       throw new Error('You can only search for 10,000 lines or less per API call')
     }
 
-    const inputFilePath = './var/log/' + fileName
+    const inputFilePath = './../var/log/' + fileName
     const execString = `tail -n ${numberOfLines} ${inputFilePath}`
 
     const stdout = await execFileSearch(execString)
