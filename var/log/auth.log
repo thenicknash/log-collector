@@ -1,0 +1,10 @@
+Oct  5 14:05:17 ce-cook-mic3006 systemd-logind[874]: New session 3499 of user nick.
+Oct  5 14:05:17 ce-cook-mic3006 systemd: pam_unix(systemd-user:session): session opened for user nick by (uid=0)
+Oct  5 14:05:23 ce-cook-mic3006 sudo:     nick : TTY=pts/0 ; PWD=/home/nick ; USER=root ; COMMAND=/usr/bin/su
+Oct  5 14:05:23 ce-cook-mic3006 sudo: pam_unix(sudo:session): session opened for user root by nick(uid=0)
+Oct  5 14:05:23 ce-cook-mic3006 su: (to root) nick on pts/0
+Oct  5 14:05:23 ce-cook-mic3006 su: pam_unix(su:session): session opened for user root by nick(uid=0)
+Oct  5 14:06:07 ce-cook-mic3006 sshd[3183194]: Connection closed by 192.168.76.153 port 50742 [preauth]
+Oct  5 14:09:01 ce-cook-mic3006 CRON[3183300]: pam_unix(cron:session): session opened for user root by (uid=0)
+Oct  5 14:09:01 ce-cook-mic3006 CRON[3183300]: pam_unix(cron:session): session closed for user root
+Oct  5 14:11:07 ce-cook-mic3006 sshd[3183473]: Connection closed by 192.168.76.153 port 56830 [preauth]
